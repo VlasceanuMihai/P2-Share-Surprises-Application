@@ -20,9 +20,11 @@ public class LIFOContainer implements IBag{
 
     @Override
     public void put(IBag bagOfSurprise) {
-        LIFOContainer theOtherBag = (LIFOContainer) bagOfSurprise;
-        this.lifoSurprisesBag.addAll(theOtherBag.getLifoSurprisesBag());
-        theOtherBag.getLifoSurprisesBag().clear();
+        if (bagOfSurprise instanceof LIFOContainer) {
+            LIFOContainer theOtherBag = (LIFOContainer) bagOfSurprise;
+            this.lifoSurprisesBag.addAll(theOtherBag.getLifoSurprisesBag());
+            theOtherBag.getLifoSurprisesBag().clear();
+        }
     }
 
 

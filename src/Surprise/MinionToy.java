@@ -7,8 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MinionToy implements ISurprise {
     private static final ArrayList<String> minions = new ArrayList<String>(Arrays.asList("Dave", "Carl", "Kevin", "Stuart", "Jerry", "Tim"));
     private String minionName;
-    private static String lastMinion = "Dave";
-
+    private static String lastMinion = minions.get(0);
 
     public MinionToy(String minionName){
         this.minionName = minionName;
@@ -21,11 +20,18 @@ public class MinionToy implements ISurprise {
 
     public static MinionToy generate(){
         int count = minions.indexOf(lastMinion);
-        MinionToy minionToy = new MinionToy(lastMinion);
-        lastMinion = minions.get(count + 1);
-//        minionToy.enjoy();
+        if (count < minions.size() - 1) {
+            MinionToy minionToy = new MinionToy(lastMinion);
+            lastMinion = minions.get(count + 1);
 
-        return minionToy;
+            if (lastMinion.equalsIgnoreCase(minions.get(minions.size() - 1))) {
+                minionToy = new MinionToy(lastMinion);
+                lastMinion = minions.get(0);
+            }
+
+            return minionToy;
+        }
+        return null;
     }
 
 

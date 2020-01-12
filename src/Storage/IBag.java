@@ -20,5 +20,6 @@ public interface IBag {
     // returns the number of surprises
     int size();
 
+    // display the surprises
     void displayBag();
 }
