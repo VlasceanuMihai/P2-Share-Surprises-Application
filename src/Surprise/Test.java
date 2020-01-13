@@ -2,6 +2,7 @@ package Surprise;
 
 import CreatingContainers.BagFactory;
 import CreatingSurprises.GatherSurprises;
+import ShareSurprises.GiveSurpriseAndApplause;
 import Storage.FIFOContainer;
 import Storage.IBag;
 import Storage.LIFOContainer;
@@ -117,7 +118,7 @@ public class Test {
         System.out.println();*/
 
 
-        //////////////////////////////////
+        /*//////////////////////////////////
         System.out.println("``` GatherSurprises ```");
         ArrayList<ISurprise> surprises1 = GatherSurprises.gather(5);
 
@@ -163,6 +164,19 @@ public class Test {
         bag.takeOut().enjoy();
         System.out.println("\nSize of Random Container1: " + bag.size());
         bag.displayBag();
-        System.out.println();
+        System.out.println();*/
+
+        GiveSurpriseAndApplause giveSurpriseAndApplause1 = new GiveSurpriseAndApplause("random", 3);
+        giveSurpriseAndApplause1.put(GatherSurprises.gather());
+        giveSurpriseAndApplause1.put(GatherSurprises.gather());
+        giveSurpriseAndApplause1.put(GatherSurprises.gather());
+        giveSurpriseAndApplause1.put(GatherSurprises.gather());
+        System.out.println(giveSurpriseAndApplause1.getBag().size());
+        giveSurpriseAndApplause1.getBag().displayBag();
+
+        giveSurpriseAndApplause1.give();
+
+        GiveSurpriseAndApplause giveSurpriseAndApplause2 = new GiveSurpriseAndApplause("random", 5);
+
     }
 }

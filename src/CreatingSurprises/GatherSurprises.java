@@ -43,7 +43,6 @@ public final class GatherSurprises {
     //care va returna o singura surpriza.
     public static ISurprise gather(){
         int number = ThreadLocalRandom.current().nextInt(0, 3);
-        System.out.println(number);
         switch (number){
             case 0:
                 return FortuneCookie.generate();
