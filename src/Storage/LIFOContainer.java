@@ -52,7 +52,7 @@ public class LIFOContainer implements IBag{
     @Override
     public void displayBag(){
         for (int i = 0; i < this.lifoSurprisesBag.size(); i++) {
-            System.out.println("Surprise [" + (i+1)  + "] from FIFO List: ");
+            System.out.println("Surprise [" + (i+1)  + "] from LIFO List: ");
             this.lifoSurprisesBag.get(i).enjoy();
         }
     }

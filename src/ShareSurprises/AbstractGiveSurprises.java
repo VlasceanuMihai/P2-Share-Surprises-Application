@@ -35,13 +35,23 @@ public abstract class AbstractGiveSurprises {
     }
 
 
-    public void give(){
+    public void give() throws Exception {
+        if (this.isEmpty()){
+            throw new Exception("The Bag is empty!");
+        }
+
+        System.out.println("Surprise eliminated: ");
         this.bag.takeOut().enjoy();
         this.giveWithPassion();
     }
 
 
-    public void giveAll(){
+    public void giveAll() throws Exception {
+        System.out.println("Surprises eliminated: ");
+        if (this.isEmpty()){
+            throw new Exception("The Bag is empty!");
+        }
+
         try{
             while (!this.isEmpty()){
                 this.bag.takeOut().enjoy();

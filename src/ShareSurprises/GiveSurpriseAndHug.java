@@ -14,13 +14,13 @@ public class GiveSurpriseAndHug extends AbstractGiveSurprises {
 
 
     @Override
-    public void give(){
+    public void give() throws Exception {
         super.give();
     }
 
 
     @Override
-    public void giveAll(){
+    public void giveAll() throws Exception {
         super.giveAll();
     }
 }

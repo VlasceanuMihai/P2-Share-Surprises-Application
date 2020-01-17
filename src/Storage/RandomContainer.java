@@ -1,6 +1,5 @@
 package Storage;
 
-import Surprise.FortuneCookie;
 import Surprise.ISurprise;
 
 import java.util.ArrayList;
@@ -31,8 +30,21 @@ public class RandomContainer implements IBag{
 
     @Override
     public ISurprise takeOut() {
-        int randomSurprise = ThreadLocalRandom.current().nextInt(0, this.randomSurprisesBag.size() - 1);
-        return this.randomSurprisesBag.remove(randomSurprise);
+        if (this.isEmpty()){
+            return null;
+        }
+
+        if (this.randomSurprisesBag.size() >= 2){
+            int randomSurprise = ThreadLocalRandom.current().nextInt(0, this.randomSurprisesBag.size());
+            return this.randomSurprisesBag.remove(randomSurprise);
+        }
+
+        return this.randomSurprisesBag.remove(0);
+
+//        int randomSurprise = ThreadLocalRandom.current().nextInt(0, this.randomSurprisesBag.size());
+//        System.out.println(randomSurprise);
+////        System.out.println(this.randomSurprisesBag.size());
+//        return this.randomSurprisesBag.remove(randomSurprise);
     }
 
 

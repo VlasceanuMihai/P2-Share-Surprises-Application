@@ -3,6 +3,8 @@ package Surprise;
 import CreatingContainers.BagFactory;
 import CreatingSurprises.GatherSurprises;
 import ShareSurprises.GiveSurpriseAndApplause;
+import ShareSurprises.GiveSurpriseAndHug;
+import ShareSurprises.GiveSurpriseAndSing;
 import Storage.FIFOContainer;
 import Storage.IBag;
 import Storage.LIFOContainer;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         /*// Surprises
         *//*System.out.println("**** Generate the surprises ****");
 
@@ -166,17 +168,73 @@ public class Test {
         bag.displayBag();
         System.out.println();*/
 
+        System.out.println("--- Random Bag 1 ---");
         GiveSurpriseAndApplause giveSurpriseAndApplause1 = new GiveSurpriseAndApplause("random", 3);
         giveSurpriseAndApplause1.put(GatherSurprises.gather());
         giveSurpriseAndApplause1.put(GatherSurprises.gather());
         giveSurpriseAndApplause1.put(GatherSurprises.gather());
         giveSurpriseAndApplause1.put(GatherSurprises.gather());
-        System.out.println(giveSurpriseAndApplause1.getBag().size());
+        System.out.println("Size of the bag = " + giveSurpriseAndApplause1.getBag().size());
         giveSurpriseAndApplause1.getBag().displayBag();
+        System.out.println();
 
         giveSurpriseAndApplause1.give();
+        System.out.println();
 
+        giveSurpriseAndApplause1.giveAll();
+        System.out.println();
+
+
+        System.out.println("--- Random Bag 2 ---");
         GiveSurpriseAndApplause giveSurpriseAndApplause2 = new GiveSurpriseAndApplause("random", 5);
+        giveSurpriseAndApplause2.put(giveSurpriseAndApplause1.getBag());
+        System.out.println("Size of the bag = " + giveSurpriseAndApplause2.getBag().size());
+        giveSurpriseAndApplause2.getBag().displayBag();
+        System.out.println();
 
+        giveSurpriseAndApplause2.give();
+        giveSurpriseAndApplause2.give();
+        System.out.println();
+
+
+        System.out.println("--- FIFO Bag 1 ---");
+        GiveSurpriseAndSing giveSurpriseAndSing1 = new GiveSurpriseAndSing("fifo", 1);
+        for (int i = 0; i < 10; i++){
+            giveSurpriseAndSing1.put(GatherSurprises.gather());
+        }
+        System.out.println("Size of the bag = " + giveSurpriseAndSing1.getBag().size());
+        giveSurpriseAndSing1.getBag().displayBag();
+        System.out.println();
+
+        giveSurpriseAndSing1.give();
+        System.out.println();
+
+        System.out.println("Is the bag empty? " + giveSurpriseAndSing1.isEmpty());
+        System.out.println("\n");
+
+
+        System.out.println("--- LIFO Bag 1 ---");
+        GiveSurpriseAndHug giveSurpriseAndHug = new GiveSurpriseAndHug("lifo", 6);
+        for (int i = 0; i < 4; i++){
+            giveSurpriseAndHug.put(GatherSurprises.gather());
+        }
+        System.out.println("Size of the bag = " + giveSurpriseAndHug.getBag().size());
+        giveSurpriseAndHug.getBag().displayBag();
+        System.out.println();
+
+        giveSurpriseAndHug.giveAll();
+        System.out.println();
+
+        System.out.println("Is the bag empty? " + giveSurpriseAndHug.isEmpty());
+
+
+
+        ArrayList<ISurprise> surprises = GatherSurprises.gather(12);
+        System.out.println(surprises.size());
+        GiveSurpriseAndSing giveSurpriseAndSing2 = new GiveSurpriseAndSing("fifo", 1);
+        for (int i = 0; i < surprises.size(); i++){
+            giveSurpriseAndSing2.put(surprises.get(i));
+        }
+        giveSurpriseAndSing2.getBag().displayBag();
     }
 }
